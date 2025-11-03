@@ -1,0 +1,15 @@
+@use '../../styles/utils' as *;
+
+.home {
+    width: 100%;
+   
+    @include tablet {
+        .inner {
+            padding: 3rem 0;
+            background-color: skyblue;
+        }
+        h2 {
+            font-size: 3rem;
+        }
+    }
+}
