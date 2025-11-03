@@ -9,7 +9,6 @@ const Featured = () => {
     const conRef = useRef(null);
     const sliderWrapperRef = useRef(null);
     const markerWrapperRef = useRef(null);
-    const activeSlideRef = useRef(null);
 
     // ✅ 슬라이드 5개로 변경
     const slides = [

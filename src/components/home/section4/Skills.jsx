@@ -1,8 +1,92 @@
 import './style.scss';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // 공통 옵션
+            const base = {
+                duration: 1,
+                ease: 'none',
+                opacity: 0,
+            };
+
+            // tools: 위에서 내려옴
+            gsap.fromTo(
+                '.skills .item.tools',
+                { y: -200, ...base },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: '.skills .item.tools',
+                        start: 'top 75%',
+                        end: 'top 60%',
+                        scrub: 1.2,
+                    },
+                }
+            );
+
+            // frontend: 오른쪽 → 제자리
+            gsap.fromTo(
+                '.skills .item.frontend',
+                { x: 250, ...base },
+                {
+                    x: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: '.skills .item.frontend',
+                        start: 'top 80%',
+                        end: 'top 60%',
+                        scrub: 1.2,
+                    },
+                }
+            );
+
+            // backend: 왼쪽 → 제자리
+            gsap.fromTo(
+                '.skills .item.backend',
+                { x: -150, ...base },
+                {
+                    x: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: '.skills .item.backend',
+                        start: 'top 80%',
+                        end: 'top 60%',
+                        scrub: 1.2,
+                    },
+                }
+            );
+
+            // ai: 아래 → 제자리
+            gsap.fromTo(
+                '.skills .item.ai',
+                { y: 100, ...base },
+                {
+                    y: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: '.skills .item.ai',
+                        start: 'top 85%',
+                        end: 'top 65%',
+                        scrub: 1.2,
+                    },
+                }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="skills">
+        <section className="skills" ref={sectionRef}>
             <div className="inner">
                 <h2>development skills</h2>
                 <div className="container">
