@@ -62,11 +62,12 @@ const Value = () => {
                     <br />
                     기획과 디자인, 그리고 코딩의 삼박자가 맞을 때 비로소 사용자 경험이 완성됩니다.
                 </p>
-                <div className="circle-loop">
+                {/* <div className="circle-loop">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </div> */}
+                {/* <div className="square"></div> */}
             </div>
         </section>
     );

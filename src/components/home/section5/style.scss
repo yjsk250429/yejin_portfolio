@@ -1,134 +1,105 @@
-.con {
+.skills {
     .inner {
-        width: 1400px;
-        height: 1000px;
-        margin: auto;
-        box-sizing: border-box;
-        position: relative;
-        padding: 100px 0;
+        height: 1080px;
     }
-}
-.con2 {
-    padding: 100px 0;
-    position: relative;
-
     h2 {
         text-align: center;
+        margin-bottom: 120px;
         font-size: 24px;
-        margin-bottom: 130px;
+        font-weight: 500;
     }
-
-    .slider {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .slider-wrapper {
-        width: max-content;
-        padding: 0 150px;
-        height: 100%;
-        display: flex;
-        align-items: flex-start;
-        gap: 150px;
-    }
-
-    .slide {
-        width: 450px;
-        height: 580px;
-        overflow: hidden;
-        background: #fff;
-        position: relative;
-        padding: 5px 0;
-        cursor: pointer;
-
-        .img-wrap {
-            width: 100%;
-            height: 300px;
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; // 좌우 2열 구조
+        grid-template-rows: repeat(2, 1fr); // 위아래 2행
+        gap: 35px; // 박스 간격
+        width: 90%;
+        height: 554px;
+        margin: 0 auto;
+        padding: 1rem;
+        color: #000;
+        // 공통 스타일
+        .item {
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 70px;
+            padding: 30px 0 30px 40px;
+            position: relative;
             overflow: hidden;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-                transition: transform 0.5s ease;
-            }
-        }
-
-        .txt {
-            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100%;
-            color: #000;
-            h3 {
-                font-size: 16px;
-                font-weight: 600;
+            strong {
+                font-family: 'Hedvig Letters Serif';
+                display: block;
+                font-size: 96px;
+                line-height: 1;
             }
-
-            p {
-                font-weight: 600;
-                font-size: 16px;
+            em {
+                font-size: 20px;
             }
-
-            .links a {
-                display: inline-block;
-                margin-right: 10px;
-                padding: 6px 12px;
-                font-size: 13px;
-                font-weight: 600;
-                border-radius: 6px;
-                background: #f0f0f0;
-                color: #333;
-                text-decoration: none;
-                // transition: background 0.3s ease, transform 0.3s ease;
-
-                // &:hover {
-                //     background: #333;
-                //     color: #fff;
-                //     transform: translateY(-2px);
-                // }
+            &::before {
+                content: '';
+                display: block;
+                background: #fff;
+                border-radius: 100%;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -100%;
+                transition: 2s;
+                z-index: -1;
+            }
+            &:hover {
+                &::before {
+                    left: -180%;
+                    top: -250%;
+                }
             }
         }
-    }
-
-    .marker-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: max-content;
-        height: 100vh;
-    }
-
-    .marker {
-        position: relative;
-        width: 2px;
-        height: 100%;
-        background: #fff;
-
-        &:after {
-            position: absolute;
-            content: '';
-            top: 200px;
-            left: -20px;
-            width: 40px;
-            height: 40px;
-            background-color: #000;
-            border: 2px solid #fff;
-            border-radius: 100%;
+        // 4개 아이템 위치 지정
+        .tools {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            &::before {
+                width: 900px;
+                height: 900px;
+                top: -170%;
+            }
         }
-    }
 
-    .active-slide {
-        position: absolute;
-        top: 210px;
-        left: 40px;
-        font-size: 15px;
+        .frontend {
+            padding: 50px 0 50px 60px;
+            border-radius: 100px;
+            grid-column: 2 / 3;
+            grid-row: 1 / 3; // 두 행을 세로로 차지
+            &::before {
+                width: 1200px;
+                height: 1200px;
+            }
+        }
+
+        .backend {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            justify-self: start;
+            width: 60%;
+            &::before {
+                width: 600px;
+                height: 600px;
+            }
+        }
+
+        .ai {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            justify-self: end;
+            width: 35%;
+            &::before {
+                top: -30%;
+                width: 400px;
+                height: 400px;
+            }
+        }
     }
 }

@@ -1,96 +1,91 @@
-.story {
-    height: 100%;
-    padding: 200px 0;
-    transform-origin: top center;
-}
-.card {
-    position: relative;
-    display: grid;
-    place-items: start center;
-    width: 100%;
-    height: 739px;
-    text-align: center;
-    overflow: hidden;
-    --holeX: -9999px;
-    --holeY: -9999px;
-    --holeR: 110px;
-    &:hover {
-        cursor: none;
-    } // 기본 커서 숨김(확대경)
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.8); // 흰색 80% 불투명
-        backdrop-filter: blur(4px); // 블러도 살짝 주면 느낌 더 좋아짐
-        z-index: 2; // 이미지 위, 확대경 아래
-        transition: opacity 0.3s ease;
-        pointer-events: none;
+.primaryValue {
+    background: #000;
+    .inner {
+        padding: 100px 0;
+        height: 700px;
     }
-}
-
-.text {
-    position: absolute;
-    top: 237px;
-    z-index: 5;
     h2 {
-        font-size: 64px;
-        font-weight: 700;
-        line-height: 1.1;
-        color: #000;
-        margin-bottom: 30px;
-    }
-    .more {
-        margin-bottom: 147px;
         font-size: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        i {
-            display: block;
-            padding-top: 4px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 150px;
+    }
+    .big-text {
+        position: relative;
+        .box {
+            background: #fff;
+            position: absolute;
+            height: 90px;
+            width: 100%;
+            transform-origin: 100% 50%;
+            &.box1 {
+                top: 10px;
+            }
+            &.box2 {
+                top: 110px;
+            }
+            &.box3 {
+                width: 90%;
+                top: 210px;
+            }
+        }
+        p {
+            font-size: 68px;
+            font-weight: 900;
+            text-align: justify;
+            margin-bottom: 40px;
+            line-height: 1.3;
         }
     }
-    p {
-        color: #000;
+    .small-text {
+        text-align: center;
         font-size: 20px;
+        margin-bottom: 70px;
+    }
+    .circle-loop {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        span {
+            display: block;
+            border: 1px solid #fff;
+            position: absolute;
+            &:nth-child(1) {
+                width: 238px;
+                height: 218px;
+                border-radius: 44% 56% 68% 32% / 45% 42% 58% 55%;
+                animation: loop 4s linear infinite;
+            }
+            &:nth-child(2) {
+                width: 229px;
+                height: 243px;
+                border-radius: 56% 44% 31% 69% / 46% 62% 38% 54%;
+                animation: loop 5s 0.2s linear infinite;
+            }
+            &:nth-child(3) {
+                width: 260px;
+                height: 250px;
+                border-radius: 66% 34% 54% 46% / 46% 62% 38% 54%;
+                animation: loop 6s 0.4s linear infinite;
+            }
+        }
     }
 }
+// .square {
+//     // display: flex;
+//     // justify-content: center;
+//     // align-items: center;
+//     width: 250px;
+//     height: 250px;
+//     border: 1px solid #fff;
+//     animation: loop 4s linear infinite;
+// }
 
-/* 이미지 */
-.card-image {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-}
-
-/* 확대경 (hover시에 scale 1로) */
-.card:hover > .magnifying-glass {
-    transform: scale(1);
-}
-
-.magnifying-glass {
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    transform: scale(0);
-    transition: transform 0.7s ease;
-    border-radius: 50%;
-    background: transparent;
-    background-repeat: no-repeat;
-    opacity: 0; // JS에서 안/밖 판정하여 토글
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 3;
-
-    /* 유리 느낌 (원본 그림자/광택 유지) */
-    box-shadow: inset 1px 2px 4px 3px rgba(255, 255, 255, 0.3),
-        inset 1px 2px 3px 2px rgba(255, 255, 255, 0.05),
-        inset 0px -40px 47px -18px rgba(0, 0, 0, 0.2), inset -5px 5px 8px 0px rgba(0, 0, 0, 0.7),
-        inset -30px 15px 20px -10px rgba(0, 0, 0, 0.25),
-        inset -10px 10px 30px -5px rgba(0, 0, 0, 0.7), inset -10px 10px 10px -5px rgba(0, 0, 0, 0.3),
-        inset 50px -50px 20px -10px rgba(108, 108, 108, 0.1), 1px 3px 8px 1px rgba(0, 0, 0, 0.4),
-        15px 38px 20px -30px rgba(0, 0, 0, 0.5), 0px 0px 3px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+@keyframes loop {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

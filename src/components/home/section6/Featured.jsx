@@ -14,33 +14,33 @@ const Featured = () => {
     const slides = [
         {
             id: 1,
-            img: '/assets/images/01.jpg',
-            title: 'Portfolio Renewal',
-            desc: 'team',
-        },
-        {
-            id: 2,
-            img: '/assets/images/02.jpg',
+            img: '/images/fromgung.png',
             title: 'From Gung Project',
             desc: 'team',
         },
         {
-            id: 3,
-            img: '/assets/images/03.jpg',
-            title: 'KEPCO Renewal',
-            desc: 'individual',
-        },
-        {
-            id: 4,
-            img: '/assets/images/04.jpg',
+            id: 2,
+            img: '/images/loccitane.png',
             title: 'L’Occitane Redesign',
             desc: 'team',
         },
         {
-            id: 5,
-            img: '/assets/images/05.jpg',
-            title: 'UI Road Trip',
+            id: 3,
+            img: '/images/images/03.jpg',
+            title: 'PUBG X aespa',
             desc: 'individual',
+        },
+        {
+            id: 4,
+            img: '/images/kepco.png',
+            title: 'KEPCO renewal',
+            desc: 'team',
+        },
+        {
+            id: 5,
+            img: '/images/images/05.jpg',
+            title: 'view\nall',
+            desc: 'projects',
         },
     ];
 
