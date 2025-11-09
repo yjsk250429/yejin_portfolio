@@ -5,7 +5,7 @@ const NavBar = ({ menu }) => {
         <nav className={menu ? 'nav show' : 'nav'}>
             <ul>
                 <li>
-                    <Link to="/about">Home</Link>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
                     <Link to="/profile">Profile</Link>

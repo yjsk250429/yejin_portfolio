@@ -2,7 +2,7 @@
     background: #000;
     .inner {
         height: 1020px;
-        padding: 120px 0;
+        padding: 200px 0;
     }
     h2 {
         text-align: center;
@@ -10,9 +10,43 @@
         font-weight: 500;
         margin-bottom: 90px;
     }
+    span {
+        display: block;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        animation: move 2s ease-in-out infinite;
+        position: relative;
+        font-family: 'Hedvig Letters Serif';
+        &::after {
+            content: '';
+            background-image: url('/images/clarity_arrow-line.png');
+            background-position: 0 0;
+            background-size: cover;
+            width: 48px;
+            height: 48px;
+            filter: invert(1);
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: -150%;
+            transform: translateX(-50%) scale(0.5);
+        }
+    }
+    @keyframes move {
+        0% {
+            transform: translateY(-10px);
+        }
+        50% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-10px);
+        }
+    }
     p {
         text-align: center;
-        margin-top: 130px;
+        margin-top: 80px;
         font-size: 20px;
     }
     .p-box {
@@ -24,7 +58,7 @@
         transform: translate(-50%, -50%) rotate(5deg);
         background: #fff;
         z-index: 1;
-        transition: 0.4s;
+        transition: 0.6s;
         opacity: 0;
         display: grid;
         grid-template-columns: 1fr 1fr;

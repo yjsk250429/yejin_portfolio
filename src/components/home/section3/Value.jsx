@@ -39,9 +39,9 @@ const Value = () => {
         return () => ctx.revert();
     }, []);
     return (
-        <section className="primaryValue" ref={sectionRef}>
+        <section className="value" ref={sectionRef}>
             <div className="inner">
-                <h2>primary value</h2>
+                <h2>(primary value)</h2>
                 <div className="big-text">
                     <div className="box box1" ref={box1Ref}></div>
                     <div className="box box2" ref={box2Ref}></div>

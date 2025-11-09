@@ -1,15 +1,52 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './style.scss';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Profile = () => {
     const [viewProfile, openViewProfile] = useState(false);
 
+    const boxRef = useRef(null);
+
+    useEffect(() => {
+        const el = boxRef.current;
+
+        gsap.fromTo(
+            el,
+            {
+                x: '-30vw', // 왼쪽에서 시작
+                y: '300px', // 위쪽에서 시작
+                rotate: 15, // 살짝 회전된 상태에서
+                opacity: 0,
+            },
+            {
+                x: 0,
+                y: 0,
+                rotate: -5,
+                opacity: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 90%', // 화면 아래쪽 근처에서 시작
+                    end: 'top 60%',
+                    scrub: 1.2, // 스크롤에 따라 자연스럽게
+                },
+            }
+        );
+
+        // cleanup
+        return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    }, []);
+
     return (
         <section className="profile">
             <div className="inner">
-                <h2>Who am I?</h2>
+                <h2>(Who am I?)</h2>
                 <div
                     className="profile-box"
+                    ref={boxRef}
                     onMouseEnter={() => openViewProfile(true)}
                     onMouseLeave={() => openViewProfile(false)}
                 >
@@ -79,6 +116,7 @@ const Profile = () => {
                         <img src="/images/profile.jpeg" alt="JUNG YE JIN" />
                     </div>
                 </div>
+                <span>click here to view more</span>
                 <p>
                     안녕하세요,
                     <br />
