@@ -10,8 +10,11 @@
         font-weight: 800;
         display: flex;
         gap: 30px;
+        white-space: nowrap;
         &.loop1 {
             margin-bottom: 20px;
+        }
+        &.loop2 {
         }
     }
     .inner {
