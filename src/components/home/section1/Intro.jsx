@@ -98,7 +98,7 @@ const Intro = () => {
             <video
                 className="intro-video"
                 ref={videoRef}
-                src="/images/intro_video_demo.mp4"
+                src="/images/intro_video_demo3.mp4"
                 autoPlay
                 muted
                 loop

@@ -5,6 +5,38 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const tools = [
+    '/images/skills/figma.png',
+    '/images/skills/github.png',
+    '/images/skills/notion.png',
+    '/images/skills/photoshop.png',
+    '/images/skills/illustrator.png',
+];
+
+const backend = [
+    '/images/skills/express.png',
+    '/images/skills/node.png',
+    '/images/skills/mongodb.png',
+];
+
+const ai = ['/images/skills/chatgpt.png', '/images/skills/claude.png'];
+
+const frontend = [
+    '/images/skills/html.png',
+    '/images/skills/js.png',
+    '/images/skills/css.png',
+    '/images/skills/react.png',
+    '/images/skills/redux.png',
+    '/images/skills/zustand.png',
+    '/images/skills/recoil.png',
+    '/images/skills/scss.png',
+    '/images/skills/styled-components.png',
+    '/images/skills/tailwind.png',
+    '/images/skills/git.png',
+    '/images/skills/GSAP.png',
+    '/images/skills/vercel.png',
+];
+
 const Skills = () => {
     const sectionRef = useRef(null);
 
@@ -88,7 +120,7 @@ const Skills = () => {
     return (
         <section className="skills" ref={sectionRef}>
             <div className="inner">
-                <h2>development skills</h2>
+                <h2>(development skills)</h2>
                 <div className="container">
                     <div className="item tools">
                         <strong>Tools</strong>
@@ -96,6 +128,13 @@ const Skills = () => {
                             협업에 필요한 다양한 툴과 프로그램을 다룰 수 있습니다.
                             <br /> Agile 방식의 원활한 협업이 가능합니다.
                         </em>
+                        <ul>
+                            {tools.map((tls) => (
+                                <li>
+                                    <img src={tls} alt={tls} />
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                     <div className="item frontend">
                         <strong>Frontend</strong>
@@ -104,6 +143,13 @@ const Skills = () => {
                             <br /> SPA, 동적 기능, 반응형 웹/앱 개발이 가능하며, <br /> 유지보수성을
                             최우선으로 하여 효율적으로 코드를 관리합니다.
                         </em>
+                        <ul>
+                            {frontend.map((frnts) => (
+                                <li>
+                                    <img src={frnts} alt={frnts} />
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                     <div className="item backend">
                         <strong>Backend</strong>
@@ -111,6 +157,13 @@ const Skills = () => {
                             백엔드 개발 영역을 이해하고,
                             <br /> 간단한 웹서버를 구축할 수 있습니다.
                         </em>
+                        <ul>
+                            {backend.map((bnds) => (
+                                <li>
+                                    <img src={bnds} alt={bnds} />
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                     <div className="item ai">
                         <strong>AI</strong>
@@ -119,6 +172,13 @@ const Skills = () => {
                             <br />
                             솔루션을 도출합니다.
                         </em>
+                        <ul>
+                            {ai.map((a) => (
+                                <li>
+                                    <img src={a} alt={a} />
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

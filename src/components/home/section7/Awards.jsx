@@ -84,7 +84,7 @@ const Awards = () => {
     return (
         <section className="awards">
             <div className="inner">
-                <h2>awards & exibition</h2>
+                <h2>(awards & exibition)</h2>
                 <p>
                     도예 전공생으로서의 다양한 전시 경험은 사용자 경험 중심의 시각을 키울 수 있게 해
                     주었습니다.

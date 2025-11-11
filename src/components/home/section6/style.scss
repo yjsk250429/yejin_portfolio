@@ -41,7 +41,70 @@
         position: relative;
         padding: 5px 0;
         cursor: pointer;
-
+        &:last-child {
+            background: #fff;
+            transition: 0.3s;
+            .img-wrap {
+                z-index: 0;
+                transform: translateX(-50%) scale(0.06) rotate(90deg);
+            }
+            &::after {
+                content: 'View More';
+                display: block;
+                // width: 60px;
+                // height: 60px;
+                // background-image: url('/images/clarity_arrow-line.png');
+                background-position: 0 0;
+                background-size: cover;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                transition: 0.6s;
+                // filter: invert(1);
+                font-family: 'Hedvig Letters Serif';
+                font-size: 30px;
+                text-align: center;
+            }
+            &:hover {
+                background: rgba(255, 255, 255, 0.6);
+                .img-wrap {
+                    display: none;
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+            .txt {
+                color: #000;
+            }
+        }
+        .vod {
+            position: absolute;
+            width: 70%;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: 0.4s;
+            object-fit: cover;
+            &.active {
+                height: 146px;
+                // animation: openV 0.5s ease-out forwards;
+            }
+        }
+        @keyframes openV {
+            0% {
+                // transform: translate(-50%, -50%) scaleX(80%) scaleY(0);
+            }
+            // 55% {
+            //     transform: translate(-50%, -50%) scaleX(80%) scaleY(10%);
+            // }
+            100% {
+                transform: translate(-50%, -50%) scaleX(1) scaleY(80%);
+            }
+        }
         .img-wrap {
             width: 100%;
             // height: 300px;
@@ -57,7 +120,11 @@
                 height: 100%;
                 object-fit: cover;
                 display: block;
-                transition: transform 0.5s ease;
+                transition: transform 0.6s ease, filter 0.3s ease;
+                &.img-hover {
+                    transform: scale(1.1);
+                    filter: brightness(0.6);
+                }
             }
         }
 
