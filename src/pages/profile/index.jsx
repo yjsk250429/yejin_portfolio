@@ -1,9 +1,9 @@
 import ModalDemo from '../../components/ui/modal/Modal';
 import './style.scss';
 
-function About() {
+function Profile() {
     return (
-        <main className="about">
+        <main className="profile">
             <div className="inner">
                 <h2>About Page.</h2>
                 <p>회사소개 , 회사소개</p>
@@ -18,4 +18,4 @@ function About() {
     );
 }
 
-export default About;
+export default Profile;

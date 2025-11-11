@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../common/Layout';
-import { About, Home } from '../pages';
+import { Contact, Home, Journey, Profile, Work } from '../pages';
 import ScrollToTop from '../common/ScrollToTop';
 
 export const MyRoutes = () => {
@@ -10,7 +10,10 @@ export const MyRoutes = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/journey" element={<Journey />} />
+                    <Route path="/work" element={<Work />} />
+                    <Route path="/contact" element={<Contact />} />
                 </Route>
             </Routes>
         </BrowserRouter>
