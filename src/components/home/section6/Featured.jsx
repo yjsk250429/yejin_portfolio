@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './style.scss';
+import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Featured = () => {
+    const navigate = useNavigate();
     const [activeId, setActiveId] = useState(null);
 
+    // const [activeId, setActiveId] = (useState < number) | (null > null);
     const videoRefs = useRef({});
 
     const conRef = useRef(null);
@@ -21,6 +24,7 @@ const Featured = () => {
             title: 'From Gung Project',
             desc: '25.08.28 - 25.09.24',
             vod: '/images/fromgung_video.mp4',
+            link: 'https://backup4-beta.vercel.app/',
         },
         {
             id: 2,
@@ -28,6 +32,7 @@ const Featured = () => {
             title: 'L’Occitane Redesign',
             desc: '25.07.31 - 25.08.26',
             vod: '/images/loccitane_video.mp4',
+            link: 'https://fffffproject-f5pwa2tkl-yejinjungs-projects.vercel.app/',
         },
         {
             id: 3,
@@ -35,6 +40,7 @@ const Featured = () => {
             title: 'PUBG X aespa',
             desc: '25.07.11 - 25.07.14',
             vod: '/images/pubgxaespa_video.mp4',
+            link: 'https://myprojectbgxaespa.vercel.app/',
         },
         {
             id: 4,
@@ -42,6 +48,7 @@ const Featured = () => {
             title: 'KEPCO renewal',
             desc: '25.06.04 - 25.06.10',
             vod: '/images/d.mp4',
+            link: 'https://kepco-theta.vercel.app/',
         },
         {
             id: 5,
@@ -49,6 +56,7 @@ const Featured = () => {
             title: 'view\nall',
             desc: 'projects',
             vod: null,
+            link: '/work',
         },
     ];
 
@@ -59,6 +67,14 @@ const Featured = () => {
     // 호버 이탈 시: 모두 정지
     const handleLeave = () => {
         setActiveId(null);
+    };
+
+    const handleClick = (slide) => {
+        if (slide.id === 5) {
+            navigate(slide.link);
+        } else {
+            window.open(slide.link, '_blank', 'noopener,noreferrer');
+        }
     };
 
     useEffect(() => {
@@ -176,6 +192,7 @@ const Featured = () => {
                             key={s.id}
                             onMouseEnter={() => handleEnter(s.id)}
                             onMouseLeave={handleLeave}
+                            onClick={() => handleClick(s)}
                         >
                             <p className="img-wrap">
                                 {/* {s.img && ( */}

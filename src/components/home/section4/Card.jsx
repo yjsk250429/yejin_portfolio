@@ -3,8 +3,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './style.scss';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
 gsap.registerPlugin(ScrollTrigger);
 const Card = ({ imageSrc = '/images/ceramic_pictures.png' }) => {
+    const navigate = useNavigate();
     const sectionRef = useRef(null);
     const cardRef = useRef(null);
     const imgRef = useRef(null);
@@ -128,7 +130,7 @@ const Card = ({ imageSrc = '/images/ceramic_pictures.png' }) => {
 
     return (
         <section className="story" ref={sectionRef}>
-            <div className="card" ref={cardRef}>
+            <div className="card" ref={cardRef} onClick={() => navigate('/journey')}>
                 <img ref={imgRef} className="card-image" src={imageSrc} alt="pics" />
                 <div className="text">
                     <h2>

@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './style.scss';
+import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Profile = () => {
     const [viewProfile, openViewProfile] = useState(false);
+    const navigate = useNavigate();
 
     const boxRef = useRef(null);
 
@@ -49,6 +51,7 @@ const Profile = () => {
                     ref={boxRef}
                     onMouseEnter={() => openViewProfile(true)}
                     onMouseLeave={() => openViewProfile(false)}
+                    onClick={() => navigate('/profile')}
                 >
                     <div className={viewProfile ? 'p-box active' : 'p-box'}>
                         <div className="box name">
