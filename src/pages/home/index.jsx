@@ -1,5 +1,5 @@
 import Intro from '../../components/home/section1/Intro';
-import Profile from '../../components/home/section2/Profile';
+import WhoAmI from '../../components/home/section2/WhoAmI';
 import Value from '../../components/home/section3/Value';
 import Card from '../../components/home/section4/Card';
 import Skills from '../../components/home/section5/Skills';
@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <main className="home">
             <Intro />
-            <Profile />
+            <WhoAmI />
             <Value />
             <Card />
             <Skills />

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Profile = () => {
+const WhoAmI = () => {
     const [viewProfile, openViewProfile] = useState(false);
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ const Profile = () => {
     }, []);
 
     return (
-        <section className="profile">
+        <section className="whoami">
             <div className="inner">
                 <h2>(Who am I?)</h2>
                 <div
@@ -132,4 +132,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default WhoAmI;

@@ -1,12 +1,43 @@
 @use '../../styles/utils' as *;
 
-.about {
+.profile {
     width: 100%;
     .inner {
-        padding: 100px 0;
+        padding: 100px 250px;
+        display: flex;
+        gap: 80px;
+        // justify-content: space-evenly;
     }
     h2 {
         font-size: 4rem;
+    }
+    .left {
+        video {
+            width: 420px;
+        }
+    }
+    .right {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        .txt {
+            width: 900px;
+            h3 {
+                font-family: 'Hedvig Letters Serif';
+                font-size: 64px;
+                border-bottom: 1px solid #fff;
+                margin-bottom: 30px;
+                line-height: 1.2;
+            }
+            dl {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
 }
 @include tablet {
