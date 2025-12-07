@@ -66,6 +66,7 @@ const Profile = () => {
                 </div>
             </section>
             <Hobby />
+
             {/* <ModalDemo /> */}
         </main>
     );

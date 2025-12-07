@@ -1,107 +1,144 @@
-import './style.scss';
+import React, { useEffect, useRef, useState } from 'react';
+import './CircleCarousel.scss';
 
-const CAROUSEL_ITEMS = [
-    {
-        label: 'Architecture Example 1',
-        text: 'https://unsplash.com/de/fotos/ein-hohes-gebaude-mit-einer-uhr-an-der-seite-cI09n4yMIYc',
-        imageUrl:
-            'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA4MjNfMjQw%2FMDAxNzU1OTIxOTM2Njc5.HQgW7RdSwTD6Y-Ef7MtA8hmHzbWn2UYbC25KE2cTIn4g.MtLn6U2m5HZJNI6GDkDFFP9WXRjzxHEX-h5vxFaIZ0wg.JPEG%2F%25B0%25F8.jpg&type=sc960_832',
-    },
-    {
-        label: 'battleground',
-        text: 'https://unsplash.com/de/fotos/ein-sehr-hohes-gebaude-mit-vielen-fenstern-3svDIdPOT6M',
-        // imageUrl: '/images/playerunknowns-battlegrounds.avif',
-        imageUrl: '/images/hobby1.png',
-    },
-    {
-        label: 'Architecture Example 3',
-        text: 'https://unsplash.com/de/fotos/ein-sehr-hohes-gebaude-mit-vielen-fenstern-ivYgEOo7MnQ',
-        imageUrl:
-            'https://images.unsplash.com/photo-1702298616106-adbe0f447455?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 4',
-        text: 'https://unsplash.com/de/fotos/weiss-graues-gebaudekonzept-8yOPWMS46CQ',
-        imageUrl:
-            'https://images.unsplash.com/photo-1565363887713-783cd82d36d2?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 5',
-        text: 'https://unsplash.com/de/fotos/ein-paar-hohe-gebaude-mit-vielen-fenstern-duj9YsiNKvM',
-        imageUrl:
-            'https://images.unsplash.com/photo-1701025034709-bef78e69d1ee?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 6',
-        text: 'https://unsplash.com/de/fotos/die-spiegelung-eines-gebaudes-in-den-fenstern-eines-anderen-gebaudes-QT6ltyDT7UA',
-        imageUrl:
-            'https://images.unsplash.com/photo-1701824580548-4f285fc0b80a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 7',
-        text: 'https://unsplash.com/de/fotos/nahaufnahme-des-weissen-gebaudes-tKnda8e9ejM',
-        imageUrl:
-            'https://images.unsplash.com/photo-1558472306-75b150ac26eb?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 8',
-        text: 'https://unsplash.com/de/fotos/ein-hohes-gebaude-mit-zwei-balkonen-und-einer-uhr-sYg7bcIodC8',
-        imageUrl:
-            'https://images.unsplash.com/photo-1713623210045-95d02b35c4a2?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 9',
-        text: 'https://unsplash.com/de/fotos/eine-nahaufnahme-der-seite-eines-gebaudes-VvhIUx1lITA',
-        imageUrl:
-            'https://images.unsplash.com/photo-1700846968547-ace2dacd5e0b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 10',
-        text: 'https://unsplash.com/de/fotos/eine-wand-aus-metallquadraten-und-quadraten-a_XIDnN6C0Y',
-        imageUrl:
-            'https://images.unsplash.com/photo-1700846978475-5f4dd936c00a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-        label: 'Architecture Example 11',
-        text: 'https://unsplash.com/de/fotos/eine-nahaufnahme-einer-metallstruktur-mit-einem-himmelshintergrund-9u9t6gP8R-s',
-        imageUrl:
-            'https://images.unsplash.com/photo-1707788620837-cd3efcce3ceb?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-];
+const slidesData = Array.from({ length: 20 }, (_, i) => `Slide ${i + 1}`);
+const dotsCount = 16;
+const step = -360 / dotsCount;
 
-const Hobby = () => {
+const getAngleIncrement = (dots, next, prev, stepValue) => {
+    let inc;
+    const half = dots / 2;
+    let prevIndex = prev;
+
+    if (prevIndex > dots) prevIndex = dots - 1;
+
+    if (Math.abs((inc = next - prevIndex)) <= half) return stepValue * inc;
+    if (Math.abs((inc = next - prevIndex + dots)) <= half) return stepValue * inc;
+    if (Math.abs((inc = next - prevIndex - dots)) <= half) return stepValue * inc;
+
+    return 0;
+};
+
+const Hobby = ({ speed = 300, autoplay = 2500 }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [angle, setAngle] = useState(0);
+
+    const prevIndexRef = useRef(0);
+    const angleRef = useRef(0);
+    const autoplayRef = useRef(null);
+
+    const slidesCount = slidesData.length;
+
+    const setSlide = (targetIndex) => {
+        let next = targetIndex;
+
+        if (next < 0) next = slidesCount - 1;
+        else if (next >= slidesCount) next = 0;
+
+        setActiveIndex(next);
+    };
+
+    const handleNext = () => {
+        setSlide(activeIndex + 1);
+    };
+
+    const handlePrev = () => {
+        setSlide(activeIndex - 1);
+    };
+
+    const handleDotClick = (index) => {
+        setSlide(index);
+    };
+
+    const startAutoplay = () => {
+        if (!autoplay) return;
+        stopAutoplay();
+
+        autoplayRef.current = setInterval(() => {
+            setActiveIndex((prev) => {
+                let next = prev + 1;
+                if (next >= slidesCount) next = 0;
+                return next;
+            });
+        }, autoplay);
+    };
+
+    const stopAutoplay = () => {
+        if (autoplayRef.current) {
+            clearInterval(autoplayRef.current);
+            autoplayRef.current = null;
+        }
+    };
+
+    // angle 계산 (activeIndex가 바뀔 때만)
+    useEffect(() => {
+        const prev = prevIndexRef.current;
+        const next = activeIndex;
+
+        if (next < dotsCount) {
+            const inc = getAngleIncrement(dotsCount, next, prev, step);
+            angleRef.current += inc;
+            setAngle(angleRef.current);
+        }
+
+        prevIndexRef.current = next;
+    }, [activeIndex]);
+
+    // autoplay 설정
+    useEffect(() => {
+        startAutoplay();
+        return () => {
+            stopAutoplay();
+        };
+        // autoplay 값이 바뀌었을 때만 재설정
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [autoplay]);
+
     return (
-        <section className="hobby">
-            <h2 className="hobbies">(hobbies)</h2>
-
-            <div className="carousel">
-                {/* 왼쪽 / 오른쪽 회전 방향 버튼 */}
-                <div className="carousel-control-button left">
-                    <input type="radio" name="carousel-control-input" />
+        <section className="container">
+            <div
+                className="circle-carousel"
+                onMouseEnter={stopAutoplay}
+                onMouseLeave={startAutoplay}
+            >
+                <div className="slides">
+                    {slidesData.map((label, index) => (
+                        <div
+                            key={index}
+                            className={`slide ${index === activeIndex ? 'active' : ''}`}
+                        >
+                            <h2>{label}</h2>
+                        </div>
+                    ))}
                 </div>
-                <div className="carousel-control-button right">
-                    <input type="radio" name="carousel-control-input" defaultChecked />
+
+                <div
+                    className="pagination"
+                    style={{
+                        transform: `translate(-50%, -50%) rotate(${angle}deg)`,
+                        transitionDuration: `${speed}ms`,
+                    }}
+                >
+                    {Array.from({ length: dotsCount }, (_, i) => (
+                        <div
+                            key={i}
+                            className={`item ${i === activeIndex ? 'active' : ''}`}
+                            style={{
+                                transform: `rotate(${(360 / dotsCount) * i}deg)`,
+                            }}
+                        >
+                            <div className="dot" onClick={() => handleDotClick(i)}>
+                                <span>{i + 1}</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
-                <div className="carousel-rotation-direction">
-                    <ul
-                        className="carousel-item-wrapper"
-                        style={{ '--_num-elements': CAROUSEL_ITEMS.length }}
-                    >
-                        {CAROUSEL_ITEMS.map((item, index) => (
-                            <li
-                                key={item.label}
-                                className="carousel-item"
-                                style={{
-                                    '--_index': index + 1,
-                                    '--_image-url': `url('${item.imageUrl}')`,
-                                }}
-                            >
-                                <img src={item.imageUrl} alt={item.label} />
-                            </li>
-                        ))}
-                        <li className="carousel-ground" />
-                    </ul>
+                <div className="next" onClick={handleNext}>
+                    Next
+                </div>
+                <div className="prev" onClick={handlePrev}>
+                    Prev
                 </div>
             </div>
         </section>

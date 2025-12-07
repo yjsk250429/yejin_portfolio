@@ -1,15 +1,19 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
 
 const Layout = () => {
+    const { pathname } = useLocation();
+    const showFooterPages = ['/', '/contact'];
+    const showFooter = showFooterPages.includes(pathname);
+
     return (
         <div className="wrap">
             <Header />
             <main className="main">
                 <Outlet />
             </main>
-            <Footer />
+            {showFooter && <Footer />}
         </div>
     );
 };
