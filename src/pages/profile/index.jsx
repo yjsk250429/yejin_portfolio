@@ -100,7 +100,7 @@ const Profile = () => {
                     </div>
                 </div>
             </section>
-            {/* <Hobby /> */}
+            <Hobby />
 
             {/* <ModalDemo /> */}
         </main>
