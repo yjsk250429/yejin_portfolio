@@ -6,11 +6,9 @@ const Profile = () => {
     return (
         <main className="profile">
             <section className="basic-info">
+                <h2>(basic information)</h2>
                 <div className="inner">
                     <div className="left">
-                        <video src="/images/profile.mp4" autoPlay muted loop playsInline />
-                    </div>
-                    <div className="right">
                         <div className="txt txt1">
                             <h3>Profile</h3>
                             <dl>
@@ -34,10 +32,10 @@ const Profile = () => {
                                     이젠아카데미 UXUI디자인 웹 프론트엔드개발 부트캠프 과정 수료
                                 </dd>
                             </dl>
-                            <dl>
+                            {/* <dl>
                                 <dt>2025.04.29</dt>
                                 <dd>휴스피치학원 스피치 트레이닝 과정 수료</dd>
-                            </dl>
+                            </dl> */}
                             <dl>
                                 <dt>2025.02.20</dt>
                                 <dd>단국대학교 죽전캠퍼스 도예과 졸업</dd>
@@ -63,9 +61,46 @@ const Profile = () => {
                             </dl>
                         </div>
                     </div>
+                    <div className="right">
+                        <div className="txt txt4">
+                            <h3>Awards & Exibition</h3>
+                            <dl>
+                                <dt>2023.11.03</dt>
+                                <dd>컴퓨터활용능력 1급</dd>
+                            </dl>
+                            <dl>
+                                <dt>2023.07.30</dt>
+                                <dd>TOEIC 915점</dd>
+                            </dl>
+                            <dl>
+                                <dt>2023.02.06</dt>
+                                <dd>ADVANCED DIVER</dd>
+                            </dl>
+                            <dl>
+                                <dt>2020.04.23</dt>
+                                <dd>2종 보통 운전면허</dd>
+                            </dl>
+                            <dl>
+                                <dt>2023.11.03</dt>
+                                <dd>컴퓨터활용능력 1급</dd>
+                            </dl>
+                            <dl>
+                                <dt>2023.07.30</dt>
+                                <dd>TOEIC 915점</dd>
+                            </dl>
+                            <dl>
+                                <dt>2023.02.06</dt>
+                                <dd>ADVANCED DIVER</dd>
+                            </dl>
+                            <dl>
+                                <dt>2020.04.23</dt>
+                                <dd>2종 보통 운전면허</dd>
+                            </dl>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <Hobby />
+            {/* <Hobby /> */}
 
             {/* <ModalDemo /> */}
         </main>

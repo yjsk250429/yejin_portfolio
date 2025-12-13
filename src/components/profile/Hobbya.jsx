@@ -69,7 +69,7 @@ const CAROUSEL_ITEMS = [
     },
 ];
 
-const Hobby = () => {
+const Hobbya = () => {
     return (
         <section className="hobby">
             <h2 className="hobbies">(hobbies)</h2>
@@ -108,4 +108,4 @@ const Hobby = () => {
     );
 };
 
-export default Hobby;
+export default Hobbya;

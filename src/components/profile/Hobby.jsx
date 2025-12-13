@@ -1,8 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './CircleCarousel.scss';
 
-const slidesData = Array.from({ length: 20 }, (_, i) => `Slide ${i + 1}`);
-const dotsCount = 16;
+// const slidesData = Array.from({ length: 16 }, (_, i) => `Slide ${i + 1}`);
+const slidesData = [
+    { id: 1, title: 'English Books', image: '/images/3745048.webp' },
+    { id: 2, title: 'American Tv Shows', image: '/images/3745048.webp' },
+    { id: 3, title: 'Battle ground', image: '/images/hobby1.png' },
+    { id: 4, title: 'Guitar', image: '/images/1.jpg' },
+    { id: 5, title: 'Diary', image: '/images/1.jpg' },
+    { id: 6, title: 'The Ocean', image: '/images/1.jpg' },
+    { id: 7, title: 'Swimming', image: '/images/1.jpg' },
+    { id: 8, title: 'Yoga', image: '/images/1.jpg' },
+    { id: 9, title: 'English Books', image: '/images/3745048.webp' },
+    { id: 10, title: 'American Tv Shows', image: '/images/1.jpg' },
+    { id: 11, title: 'Battle ground', image: '/images/1.jpg' },
+    { id: 12, title: 'Guitar', image: '/images/1.jpg' },
+    { id: 13, title: 'Diary', image: '/images/1.jpg' },
+    { id: 14, title: 'The Ocean', image: '/images/1.jpg' },
+    { id: 15, title: 'Swimming', image: '/images/1.jpg' },
+    { id: 16, title: 'Yoga', image: '/images/1.jpg' },
+];
+const dotsCount = slidesData.length;
 const step = -360 / dotsCount;
 
 const getAngleIncrement = (dots, next, prev, stepValue) => {
@@ -96,18 +114,19 @@ const Hobby = ({ speed = 300, autoplay = 2500 }) => {
 
     return (
         <section className="container">
+            <h2>(hobbies)</h2>
             <div
                 className="circle-carousel"
                 onMouseEnter={stopAutoplay}
                 onMouseLeave={startAutoplay}
             >
                 <div className="slides">
-                    {slidesData.map((label, index) => (
+                    {slidesData.map((slide, index) => (
                         <div
-                            key={index}
+                            key={slide.id}
                             className={`slide ${index === activeIndex ? 'active' : ''}`}
                         >
-                            <h2>{label}</h2>
+                            <h2>{slide.title}</h2>
                         </div>
                     ))}
                 </div>
@@ -119,16 +138,17 @@ const Hobby = ({ speed = 300, autoplay = 2500 }) => {
                         transitionDuration: `${speed}ms`,
                     }}
                 >
-                    {Array.from({ length: dotsCount }, (_, i) => (
+                    {slidesData.map((slide, index) => (
                         <div
-                            key={i}
-                            className={`item ${i === activeIndex ? 'active' : ''}`}
+                            key={slide.id}
+                            className={`item ${index === activeIndex ? 'active' : ''}`}
                             style={{
-                                transform: `rotate(${(360 / dotsCount) * i}deg)`,
+                                transform: `rotate(${(360 / dotsCount) * index}deg)`,
                             }}
                         >
-                            <div className="dot" onClick={() => handleDotClick(i)}>
-                                <span>{i + 1}</span>
+                            <div className="dot" onClick={() => handleDotClick(index)}>
+                                {/* <span>{i + 1}</span> */}
+                                <img src={slide.image} alt={slide.title} />
                             </div>
                         </div>
                     ))}
