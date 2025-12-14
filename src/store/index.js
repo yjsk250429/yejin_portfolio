@@ -1,9 +1,8 @@
 import { create } from 'zustand';
 
-export const useAAAStore = create((set, get) => ({
-    // state
-    data: [],
+export const useModalStore = create((set) => ({
+    menuOpen: false,
 
-    // actions
-    onReset: () => set({ data: [] }),
+    openMenu: () => set({ menuOpen: true }),
+    closeMenu: () => set({ menuOpen: false }),
 }));

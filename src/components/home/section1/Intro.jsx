@@ -1,5 +1,5 @@
 import './style.scss';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,6 +10,15 @@ const Intro = () => {
     const bgRef = useRef(null);
     const videoRef = useRef(null);
     const innerRef = useRef(null); // ✅ (1) innerRef 추가
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setVisible(window.scrollY > 10);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     useEffect(() => {
         const SCALE_END = 120; // .bg 최종 스케일
@@ -111,6 +120,7 @@ const Intro = () => {
                     Crafting The Digital
                 </div>
             </div>
+            <p className={`scrolldown ${visible ? 'hide' : ''}`}>scroll</p>
         </section>
     );
 };

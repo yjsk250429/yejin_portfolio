@@ -40,8 +40,8 @@ html.is-active {
         span {
             display: block;
             width: 50px;
-            height: 1px;
-            background: #fff;
+            height: 2px;
+            background: #c0c0c0;
             position: absolute;
             right: 0;
             transition: 0.4s;
@@ -97,7 +97,7 @@ html.is-active {
                     font-size: 18px;
                     font-weight: 800;
                     transition: 0.3s;
-                    color: #fff;
+                    color: #c0c0c0;
                     &.flip-animate {
                         perspective: 1000px;
 
@@ -128,7 +128,7 @@ html.is-active {
                         }
 
                         &:hover span:before {
-                            color: #999;
+                            color: #ff9999;
                         }
                     }
                     img {

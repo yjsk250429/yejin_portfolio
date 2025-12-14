@@ -1,5 +1,5 @@
 const Journey = () => {
-    return <div>index</div>;
+    return <main className="journey">index</main>;
 };
 
 export default Journey;

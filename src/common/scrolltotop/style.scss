@@ -1,0 +1,43 @@
+.topBtn {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    right: 50px;
+    bottom: 50px;
+    z-index: 100000;
+    border: 1px solid #c0c0c0;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    text-align: center;
+    padding-top: 4px;
+    i {
+        font-size: 32px;
+        opacity: 0;
+        transition: 0.4s;
+        display: block;
+        transition: opacity 0.3s ease;
+        will-change: transform;
+        color: #c0c0c0;
+    }
+    &:hover {
+        i {
+            opacity: 1;
+        }
+    }
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @media screen and (max-width: 393px) {
+        width: 30px;
+        height: 30px;
+        img {
+            width: 30px;
+        }
+    }
+}

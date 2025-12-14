@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import NavBar from './NavBar';
-import { useState } from 'react';
+import NavBar from '../menu/NavBar';
+import { useModalStore } from '../../store';
 
 const Header = () => {
-    const [menu, openMenu] = useState(false);
+    // const [menu, openMenu] = useState(false);
+    const { openMenu } = useModalStore();
 
     return (
         <header id="header">
@@ -13,11 +14,11 @@ const Header = () => {
                         <img src="/images/J_logo_white_shadow.png" alt="JungYejin" />
                     </Link>
                 </h1>
-                <p className={menu ? 'menu active' : 'menu'} onClick={() => openMenu(!menu)}>
+                <p className="menu" onClick={openMenu}>
                     <span></span>
                     <span></span>
                 </p>
-                <NavBar menu={menu} />
+                {/* <NavBar menu={menu} /> */}
             </div>
         </header>
     );

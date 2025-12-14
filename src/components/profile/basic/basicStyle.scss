@@ -1,0 +1,53 @@
+.basic-info {
+    padding: 100px;
+    h2 {
+        // font-size: 4rem;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .inner {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .txt {
+        width: 800px;
+        h3 {
+            font-family: 'Hedvig Letters Serif';
+            font-size: 64px;
+            border-bottom: 1px solid #fff;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+        dl {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            dt {
+                font-weight: 200;
+            }
+            dd {
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                color: #dcdcdc;
+                text-align: right;
+            }
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .right {
+        .txt {
+            dl {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
