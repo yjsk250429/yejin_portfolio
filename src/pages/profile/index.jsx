@@ -7,6 +7,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+    window.ScrollTrigger = ScrollTrigger;
+}
 
 const Profile = () => {
     const rootRef = useRef(null);
@@ -80,6 +83,7 @@ const Profile = () => {
             // ✅ 핵심: trigger를 root로 되돌리고, end는 타임라인 duration 기반으로
             ScrollTrigger.create({
                 trigger: root,
+                // scroller: document.documentElement,
                 start: 'top top',
                 end: () => `+=${tl.totalDuration() * window.innerHeight}`,
                 scrub: 0.8,
