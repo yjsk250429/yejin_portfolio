@@ -1,5 +1,9 @@
 .basic-info {
+    height: 100vh;
     padding: 100px;
+    box-sizing: border-box;
+    background: #000;
+    overflow: hidden;
     h2 {
         // font-size: 4rem;
         font-size: 20px;
@@ -7,8 +11,11 @@
         margin-bottom: 30px;
     }
     .inner {
+        height: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        gap: 60px;
+        align-items: stretch;
     }
 
     .txt {
@@ -39,11 +46,25 @@
         }
     }
     .left {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
+        height: 100%;
+        img {
+            width: 500px;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
     }
     .right {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        .right__track {
+            // flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            will-change: transform; // ✅ GSAP 이동 최적화
+        }
         .txt {
             dl {
                 margin-bottom: 15px;
