@@ -8,17 +8,17 @@ const NavBar = () => {
         <nav className="nav">
             <ul>
                 <li onClick={closeMenu}>
-                    <Link to="/" class="flip-animate">
+                    <Link to="/">
                         <span data-hover="HOME">HOME</span>
                     </Link>
                 </li>
                 <li onClick={closeMenu}>
-                    <Link to="/profile" class="flip-animate">
+                    <Link to="/profile">
                         <span data-hover="PROFILE">PROFILE</span>
                     </Link>
                 </li>
                 <li onClick={closeMenu}>
-                    <Link to="/journey" class="flip-animate">
+                    <Link to="/journey">
                         <img src="/images/J_logo_white_shadow.png" alt="logo" />
                         <span data-hover="OURNEY">
                             {/* <img src="/images/J_logo_white_shadow.png" alt="logo" /> */}
@@ -27,12 +27,12 @@ const NavBar = () => {
                     </Link>
                 </li>
                 <li onClick={closeMenu}>
-                    <Link to="/work" class="flip-animate">
+                    <Link to="/work">
                         <span data-hover="WORK">WORK</span>
                     </Link>
                 </li>
                 <li onClick={closeMenu}>
-                    <Link to="/contact" class="flip-animate">
+                    <Link to="/contact">
                         <span data-hover="CONTACT">CONTACT</span>
                     </Link>
                 </li>
