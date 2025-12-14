@@ -2,6 +2,7 @@
 
 .profile {
     width: 100%;
+    overflow: auto;
     &.profile--cover {
         position: relative;
         width: 100%;
