@@ -82,7 +82,7 @@ const Profile = () => {
             ScrollTrigger.create({
                 trigger: root,
                 start: 'top top',
-                end: () => `+=${tl.duration() * window.innerHeight}`,
+                end: () => `+=${window.innerHeight * (panels.length + 3)}`,
                 scrub: 0.8,
                 pin: true,
                 anticipatePin: 1,
