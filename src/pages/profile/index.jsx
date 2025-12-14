@@ -80,11 +80,11 @@ const Profile = () => {
 
             // 3) 타임라인 기반 ScrollTrigger (전체 스크롤 길이는 tl duration에 비례)
             ScrollTrigger.create({
-                trigger: root,
+                trigger: document.body,
                 start: 'top top',
-                end: () => `+=${window.innerHeight * (panels.length + 3)}`,
+                end: () => `+=${root.scrollHeight + window.innerHeight}`,
                 scrub: 0.8,
-                pin: true,
+                pin: root,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
                 animation: tl,
