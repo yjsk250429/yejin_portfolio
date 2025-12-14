@@ -18,21 +18,20 @@ const Profile = () => {
         const panels = gsap.utils.toArray(root.querySelectorAll('.profile__panel'));
 
         const ctx = gsap.context(() => {
-            // 1) 패널 스택 초기화: 첫 패널 보임, 나머지는 아래 대기
+            // 초기: 첫 패널만 보이고 나머진 아래에서 대기
             gsap.set(panels, { yPercent: 0 });
             gsap.set(panels.slice(1), { yPercent: 100 });
 
             const tl = gsap.timeline({ defaults: { ease: 'none' } });
 
-            // 2) 패널 전환 + (특정 패널 구간: 내부 이동) 구성
             panels.forEach((panel, i) => {
                 const next = panels[i + 1];
                 if (!next) return;
 
-                // (A) 다음 섹션이 아래에서 위로 올라와 덮어쓰기
+                // (A) 다음 섹션 덮어쓰기 전환
                 tl.to(next, { yPercent: 0, duration: 1 }, '+=0');
 
-                // (B) BasicInfo 섹션이면: .right__track을 위로 이동 (스크롤바 없이 내용만 지나가게)
+                // (B) BasicInfo 내부 트랙(세로 이동)
                 const rightMask = next.querySelector('.basic-info .right');
                 const rightTrack = next.querySelector('.basic-info .right__track');
                 if (rightMask && rightTrack) {
@@ -48,14 +47,14 @@ const Profile = () => {
                             duration: () => {
                                 const max = rightTrack.scrollHeight - rightMask.clientHeight;
                                 const factor = max > 0 ? max / window.innerHeight : 0;
-                                return Math.max(1, factor); // 내용이 길수록 세로 스크롤 구간 길게
+                                return Math.max(1, factor);
                             },
                         },
                         '+=0'
                     );
                 }
 
-                // (C) Hobby 섹션이면: .hobby__track을 좌로 이동 (가로 스크롤 연출)
+                // (C) Hobby 내부 트랙(가로 이동)
                 const hobbyTrack = next.querySelector('.hobby__track');
                 if (hobbyTrack) {
                     tl.set(hobbyTrack, { x: 0 }, '+=0');
@@ -70,7 +69,7 @@ const Profile = () => {
                             duration: () => {
                                 const maxScroll = hobbyTrack.scrollWidth - window.innerWidth;
                                 const factor = maxScroll > 0 ? maxScroll / window.innerWidth : 0;
-                                return Math.max(1, factor); // 가로 길이에 비례해서 구간 길게
+                                return Math.max(1, factor);
                             },
                         },
                         '+=0'
@@ -78,19 +77,22 @@ const Profile = () => {
                 }
             });
 
-            // 3) 타임라인 기반 ScrollTrigger (전체 스크롤 길이는 tl duration에 비례)
+            // ✅ 핵심: trigger를 root로 되돌리고, end는 타임라인 duration 기반으로
             ScrollTrigger.create({
-                trigger: document.body,
+                trigger: root,
                 start: 'top top',
-                end: () => `+=${root.scrollHeight + window.innerHeight}`,
+                end: () => `+=${tl.totalDuration() * window.innerHeight}`,
                 scrub: 0.8,
-                pin: root,
+                pin: true, // pin: root 와 동일 (trigger가 root니까)
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
                 animation: tl,
             });
 
+            // 로딩/레이아웃 안정화 후 refresh 한 번 더 (배포에서 특히 중요)
             ScrollTrigger.refresh();
+            requestAnimationFrame(() => ScrollTrigger.refresh());
+            window.addEventListener('load', ScrollTrigger.refresh, { once: true });
         }, root);
 
         return () => ctx.revert();
