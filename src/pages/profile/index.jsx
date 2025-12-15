@@ -13,6 +13,7 @@ const Profile = () => {
     const stageRef = useRef(null); // 실제 화면(Pin)
 
     useLayoutEffect(() => {
+        console.log('ScrollTrigger is', ScrollTrigger);
         const wrapper = wrapperRef.current;
         const stage = stageRef.current;
         if (!wrapper || !stage) return;
