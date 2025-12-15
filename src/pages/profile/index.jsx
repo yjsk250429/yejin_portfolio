@@ -103,7 +103,6 @@ const Profile = () => {
 
         const st = ScrollTrigger.create({
             trigger: wrapper,
-            scroller: document.documentElement, // 배포/브라우저 차이 방지
             start: 'top top',
             end: 'bottom bottom',
             scrub: 0.8,
