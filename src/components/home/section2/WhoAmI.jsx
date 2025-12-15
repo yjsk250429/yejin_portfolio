@@ -57,50 +57,57 @@ const WhoAmI = () => {
                         <div className="box name">
                             <h3>Profile</h3>
                             <table>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>정예진</td>
-                                </tr>
-                                <tr>
-                                    <td>Birth</td>
-                                    <td>2001.04.20</td>
-                                </tr>
-                                <tr>
-                                    <td>Address</td>
-                                    <td>대한민국, 서울</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>정예진</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Birth</td>
+                                        <td>2001.04.20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td>대한민국, 서울</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div className="box lic">
                             <h3>License</h3>
                             <table>
-                                <tr>
-                                    <td>2025.09.24</td>
-                                    <td>컴퓨터활용능력 1급</td>
-                                </tr>
-                                <tr>
-                                    <td>2025.02.20</td>
-                                    <td>TOEIC 915점</td>
-                                </tr>
-                                <tr>
-                                    <td>2025.02.20</td>
-                                    <td>2종보통운전면허</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>2025.09.24</td>
+                                        <td>컴퓨터활용능력 1급</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025.02.20</td>
+                                        <td>TOEIC 915점</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025.02.20</td>
+                                        <td>2종보통운전면허</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                         <div className="box edu">
                             <h3>Education</h3>
                             <table>
-                                <tr>
-                                    <td>2025.09.24</td>
-                                    <td>
-                                        이젠아카데미 UXUI디자인 웹 프론트엔드개발 부트캠프 과정 수료
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2025.02.20</td>
-                                    <td>단국대학교 죽전캠퍼스 도예과 졸업</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>2025.09.24</td>
+                                        <td>
+                                            이젠아카데미 UXUI디자인 웹 프론트엔드개발 부트캠프 과정
+                                            수료
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2025.02.20</td>
+                                        <td>단국대학교 죽전캠퍼스 도예과 졸업</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>

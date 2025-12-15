@@ -4,7 +4,7 @@ import Motto from '../../components/profile/motto/Motto';
 import './style.scss';
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,6 +99,7 @@ const Profile = () => {
         setWrapperHeight();
 
         // ✅ 핵심: wrapper가 스크롤을 만들고, stage는 pin
+
         const st = ScrollTrigger.create({
             trigger: wrapper,
             scroller: document.documentElement, // 배포/브라우저 차이 방지

@@ -130,8 +130,8 @@ const Skills = () => {
                         </em>
                         <ul>
                             {tools.map((tls) => (
-                                <li>
-                                    <img src={tls} alt={tls} />
+                                <li key={tls}>
+                                    <img src={tls} alt="tools" />
                                 </li>
                             ))}
                         </ul>
@@ -145,8 +145,8 @@ const Skills = () => {
                         </em>
                         <ul>
                             {frontend.map((frnts) => (
-                                <li>
-                                    <img src={frnts} alt={frnts} />
+                                <li key={frnts}>
+                                    <img src={frnts} alt="frontend" />
                                 </li>
                             ))}
                         </ul>
@@ -159,8 +159,8 @@ const Skills = () => {
                         </em>
                         <ul>
                             {backend.map((bnds) => (
-                                <li>
-                                    <img src={bnds} alt={bnds} />
+                                <li key={bnds}>
+                                    <img src={bnds} alt="backend" />
                                 </li>
                             ))}
                         </ul>
@@ -174,8 +174,8 @@ const Skills = () => {
                         </em>
                         <ul>
                             {ai.map((a) => (
-                                <li>
-                                    <img src={a} alt={a} />
+                                <li key={a}>
+                                    <img src={a} alt="ai" />
                                 </li>
                             ))}
                         </ul>

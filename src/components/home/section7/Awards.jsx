@@ -92,7 +92,7 @@ const Awards = () => {
                     과정에도 연결되어 역량을 발휘할 수 있었습니다.
                 </p>
                 {awards.map((awd) => (
-                    <div className={`awd awd${awd.id}`} data-aos="zoom-in">
+                    <div key={awd.id} className={`awd awd${awd.id}`} data-aos="zoom-in">
                         <strong>{awd.date}</strong>
                         <em>{awd.content}</em>
                     </div>
