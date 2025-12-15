@@ -14,32 +14,30 @@ const WhoAmI = () => {
 
     useEffect(() => {
         const el = boxRef.current;
+        if (!el) return;
 
-        gsap.fromTo(
-            el,
-            {
-                x: '-30vw', // 왼쪽에서 시작
-                y: '300px', // 위쪽에서 시작
-                rotate: 15, // 살짝 회전된 상태에서
-                opacity: 0,
-            },
-            {
-                x: 0,
-                y: 0,
-                rotate: -5,
-                opacity: 1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 90%', // 화면 아래쪽 근처에서 시작
-                    end: 'top 60%',
-                    scrub: 1.2, // 스크롤에 따라 자연스럽게
-                },
-            }
-        );
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                el,
+                { x: '-30vw', y: '300px', rotate: 15, opacity: 0 },
+                {
+                    x: 0,
+                    y: 0,
+                    rotate: -5,
+                    opacity: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        id: 'whoami-box',
+                        trigger: el,
+                        start: 'top 90%',
+                        end: 'top 60%',
+                        scrub: 1.2,
+                    },
+                }
+            );
+        }, el);
 
-        // cleanup
-        return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        return () => ctx.revert(); // ✅ 이 컴포넌트에서 만든 것만 정리
     }, []);
 
     return (

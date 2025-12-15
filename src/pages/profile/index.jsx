@@ -13,23 +13,12 @@ const Profile = () => {
     const stageRef = useRef(null); // 실제 화면(Pin)
 
     useLayoutEffect(() => {
-        console.log('ScrollTrigger is', ScrollTrigger);
         const wrapper = wrapperRef.current;
         const stage = stageRef.current;
         if (!wrapper || !stage) return;
 
-        // ✅ 배포 디버그용: 콘솔에서 확인 가능
-        window.ScrollTrigger = ScrollTrigger;
-
         const panels = Array.from(stage.querySelectorAll('.profile__panel'));
         if (panels.length < 2) return;
-
-        // 혹시 이전 잔재가 있으면 정리
-        ScrollTrigger.getAll().forEach((t) => {
-            // 다른 페이지 트리거까지 죽일 수 있으니 "Profile 것만" 죽이는 게 이상적이지만
-            // 지금은 원인 분리 위해 일단 전부 정리(문제 해결 후 범위 좁히면 됨)
-            t.kill();
-        });
 
         // 1) 초기 위치
         gsap.set(panels, { yPercent: 0 });
@@ -91,17 +80,14 @@ const Profile = () => {
         });
 
         const setWrapperHeight = () => {
-            // tl이 “겹침 패널” 구조에서는 scrollHeight로 end 잡으면 깨짐 → duration 기반으로 강제
             const h = Math.ceil(tl.totalDuration() * window.innerHeight);
             wrapper.style.height = `${Math.max(h, window.innerHeight)}px`;
         };
 
-        // ✅ 레이아웃 안정화 후 세팅
         setWrapperHeight();
 
-        // ✅ 핵심: wrapper가 스크롤을 만들고, stage는 pin
-
         const st = ScrollTrigger.create({
+            id: 'profileST',
             trigger: wrapper,
             start: 'top top',
             end: 'bottom bottom',
@@ -111,40 +97,36 @@ const Profile = () => {
             anticipatePin: 1,
             invalidateOnRefresh: true,
             animation: tl,
-            // markers: true, // 필요하면 켜서 배포에서 확인
         });
 
-        // ✅ 배포 디버그용: 콘솔에서 window.__profileST로 확인 가능
         window.__profileST = st;
 
-        // refresh 타이밍(배포에서 폰트/이미지 로딩으로 높이 변하는 케이스 대비)
-        ScrollTrigger.refresh();
-        requestAnimationFrame(() => {
+        const onLoad = () => {
             setWrapperHeight();
             ScrollTrigger.refresh();
-        });
-        window.addEventListener(
-            'load',
-            () => {
-                setWrapperHeight();
-                ScrollTrigger.refresh();
-            },
-            { once: true }
-        );
+        };
 
         const onResize = () => {
             setWrapperHeight();
             ScrollTrigger.refresh();
         };
+
+        ScrollTrigger.refresh();
+        requestAnimationFrame(() => {
+            setWrapperHeight();
+            ScrollTrigger.refresh();
+        });
+
+        window.addEventListener('load', onLoad, { once: true });
         window.addEventListener('resize', onResize);
 
         return () => {
             window.removeEventListener('resize', onResize);
+            window.removeEventListener('load', onLoad);
             st.kill();
             tl.kill();
         };
     }, []);
-
     return (
         <div className="profile" ref={wrapperRef}>
             <main className="profile profile--cover" ref={stageRef}>
