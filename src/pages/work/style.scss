@@ -1,0 +1,99 @@
+.work {
+    .projects {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -5%;
+            top: -20%;
+            width: 1350px;
+            height: 1100px;
+            background-image: url('/images/bg_logo.png');
+            background-position: 0 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: -10000;
+        }
+        h2 {
+            // margin: 100px 0 30px 250px;
+            font-size: 40px;
+            font-family: 'Hedvig Letters Serif';
+            letter-spacing: 5px;
+        }
+        .revealing-text {
+            position: relative;
+            display: inline-block;
+            > span {
+                &:nth-child(1) {
+                    color: #333;
+                }
+
+                &:nth-child(2) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    color: #fff;
+                    transition: 0.6s;
+                    width: 100%;
+                    transform: translateX(-100%);
+                    overflow: hidden;
+
+                    > span {
+                        transform: translateX(100%);
+                        display: inline-block;
+                        transition: inherit;
+                    }
+                }
+            }
+
+            &.revealed {
+                span {
+                    &:nth-child(2) {
+                        transform: translateX(0);
+
+                        > span {
+                            transform: translateX(0);
+                        }
+                    }
+                }
+            }
+        }
+        .inner {
+            width: 1400px;
+            // padding: 100px 0;
+            .btns {
+                display: flex;
+                justify-content: end;
+                align-items: center;
+                button {
+                    width: 35px;
+                    height: 35px;
+                    background: #fff;
+                    border: 1px solid #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    &.seeCube {
+                        span {
+                            width: 18px;
+                            height: 18px;
+                            background: #000;
+                        }
+                    }
+                    &.seeList {
+                        background: none;
+                        i {
+                            color: #fff;
+                            font-size: 18px;
+                            margin-top: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
