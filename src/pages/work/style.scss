@@ -8,14 +8,15 @@
             display: block;
             position: absolute;
             right: -5%;
-            top: -20%;
-            width: 1350px;
-            height: 1100px;
+            top: -34%;
+            width: 1450px;
+            height: 1450px;
             background-image: url('/images/bg_logo.png');
             background-position: 0 0;
             background-size: cover;
             background-repeat: no-repeat;
             z-index: -10000;
+            opacity: 0.8;
         }
         h2 {
             // margin: 100px 0 30px 250px;
