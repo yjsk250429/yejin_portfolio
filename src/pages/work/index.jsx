@@ -20,7 +20,7 @@ const Work = () => {
         const ctx = gsap.context(() => {
             gsap.set(inner, { opacity: 0, y: -30 });
 
-            // ✅ 중앙 고정 + scale로 크게 시작
+            //중앙 고정 + scale로 크게 시작
             gsap.set(h2, {
                 position: 'fixed',
                 left: '50%',
@@ -29,7 +29,7 @@ const Work = () => {
                 yPercent: -50,
                 margin: 0,
                 zIndex: 10,
-                scale: 3.2, // ✅ 150/40 = 3.75
+                scale: 3.2,
                 transformOrigin: '50% 50%',
                 willChange: 'transform',
             });
@@ -56,7 +56,7 @@ const Work = () => {
             gsap.context(() => {
                 const fromRect = h2.getBoundingClientRect();
 
-                // ✅ 원래 자리로 돌리기 (relative)
+                // 원래 자리로 돌리기 (relative)
                 gsap.set(h2, {
                     position: 'relative',
                     left: 'auto',
@@ -73,7 +73,7 @@ const Work = () => {
                 const dx = fromRect.left - toRect.left;
                 const dy = fromRect.top - toRect.top;
 
-                // ✅ scale도 같이 유지한 채 “from 위치”로 순간이동
+                // scale도 같이 유지한 채 “from 위치”로 순간이동
                 gsap.set(h2, { x: dx, y: dy, transformOrigin: '50% 50%' });
 
                 const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
