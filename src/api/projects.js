@@ -12,7 +12,7 @@ export default [
         },
 
         description:
-            '대상 사용자 / 마케팅 대상 / 목적 / ..을 첨예하게 (섬세하게, 면밀하게) 설정한 후 그에 따른 사용자 니즈 파악, 여정 설계까지 새로운 프로덕트를 만들어내는 전반적인 기획 과정을 거치고 그에 따른 결과물을 만들어냄',
+            '타겟층과 마케팅 목표를 명확히 정의한 뒤, 사용자 니즈 분석과 여정 설계를 기반으로 새로운 웹 프로덕트를 기획했습니다.',
         links: {
             web: 'https://backup4-beta.vercel.app/',
             github: 'https://github.com/yjsk250429/from_gung_project.git',
@@ -26,7 +26,7 @@ export default [
         id: 2,
         label: 'The 1st Main Project',
         title: 'L’occitane E-Commerce',
-        tools: ['react', 'redux', 'styled-components'],
+        tools: ['react', 'redux', 'scss'],
         layout: 'desktop/mobile',
         type: 'team',
         contribution: {
@@ -134,7 +134,7 @@ export default [
     },
     {
         id: 7,
-        label: '',
+        label: 'Website Re-design',
         title: '한국전력공사(KEPCO)',
         tools: ['html', 'css', 'javascript'],
         layout: 'desktop',

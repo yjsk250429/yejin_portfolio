@@ -13,7 +13,7 @@ import 'swiper/css/navigation';
 
 const CubeView = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-
+    // const swiperRef = useRef(null);
     // 현재 선택된 프로젝트
     const current = useMemo(() => {
         if (!projects?.length) return null;
@@ -23,6 +23,14 @@ const CubeView = () => {
     const { web, github, figma } = current?.links ?? {};
 
     const { code, design } = current?.contribution ?? {};
+
+    // const handlePrev = () => {
+    //     swiperRef.current?.slidePrev();
+    // };
+
+    // const handleNext = () => {
+    //     swiperRef.current?.slideNext();
+    // };
 
     return (
         <div className="cubeView">
@@ -40,6 +48,9 @@ const CubeView = () => {
                 navigation={true}
                 modules={[EffectCube, Pagination, Navigation]}
                 className="mySwiper"
+                // onSwiper={(swiper) => {
+                //     swiperRef.current = swiper;
+                // }}
                 onSlideChange={(swiper) => {
                     // loop 안 쓰면 activeIndex로 OK
                     setActiveIndex(swiper.activeIndex);
@@ -57,7 +68,7 @@ const CubeView = () => {
                 ))}
             </Swiper>
 
-            <div className="content">
+            <div className="content" key={activeIndex}>
                 {current ? (
                     <>
                         <strong>{current.label}</strong>
@@ -129,6 +140,16 @@ const CubeView = () => {
                 ) : (
                     <div className="emptyContent">프로젝트 데이터가 없습니다.</div>
                 )}
+                {/* <p className="navi-btns">
+                    <button type="button" onClick={handlePrev}>
+                        <img src="/images/clarity_arrow-line.png" alt="prev" />
+                        PREV
+                    </button>
+                    <button type="button" onClick={handleNext}>
+                        NEXT
+                        <img src="/images/clarity_arrow-line.png" alt="next" />
+                    </button>
+                </p> */}
             </div>
         </div>
     );
