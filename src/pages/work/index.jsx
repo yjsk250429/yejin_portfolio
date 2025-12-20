@@ -12,6 +12,46 @@ const Work = () => {
     const h2Ref = useRef(null);
     const innerRef = useRef(null);
 
+    const [view, setView] = useState('cube'); // 'cube' | 'list'
+    const cubeRef = useRef(null);
+    const listRef = useRef(null);
+
+    const handleChangeView = (nextView) => {
+        if (nextView === view) return;
+
+        const currentEl = view === 'cube' ? cubeRef.current : listRef.current;
+        const nextEl = nextView === 'cube' ? cubeRef.current : listRef.current;
+
+        const tl = gsap.timeline({
+            defaults: { ease: 'power3.inOut' },
+        });
+
+        // 현재 뷰 OUT
+        tl.to(currentEl, {
+            opacity: 0,
+            y: 40,
+            duration: 0.5,
+            pointerEvents: 'none',
+        });
+
+        // 다음 뷰 준비
+        tl.set(nextEl, {
+            opacity: 0,
+            y: 40,
+            pointerEvents: 'none',
+        });
+
+        // 다음 뷰 IN
+        tl.to(nextEl, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            pointerEvents: 'auto',
+        });
+
+        setView(nextView);
+    };
+
     useEffect(() => {
         const section = sectionRef.current;
         const h2 = h2Ref.current;
@@ -109,6 +149,20 @@ const Work = () => {
         return () => overlaySpan.removeEventListener('transitionend', onRevealEnd);
     }, [revealed]);
 
+    useEffect(() => {
+        gsap.set(cubeRef.current, {
+            opacity: 1,
+            y: 0,
+            pointerEvents: 'auto',
+        });
+
+        gsap.set(listRef.current, {
+            opacity: 0,
+            y: 40,
+            pointerEvents: 'none',
+        });
+    }, []);
+
     return (
         <main className="work">
             <section className="projects" ref={sectionRef}>
@@ -121,17 +175,30 @@ const Work = () => {
 
                 <div className="inner" ref={innerRef}>
                     <p className="btns">
-                        <button className="seeCube">
+                        <button
+                            className={`seeCube ${view === 'cube' ? 'active' : ''}`}
+                            onClick={() => handleChangeView('cube')}
+                        >
                             <span></span>
                         </button>
-                        <button className="seeList">
+                        <button
+                            className={`seeList ${view === 'list' ? 'active' : ''}`}
+                            onClick={() => handleChangeView('list')}
+                        >
                             <i>
                                 <FaList />
                             </i>
                         </button>
                     </p>
-                    <CubeView />
-                    {/* <ListView /> */}
+                    <div className="view-area">
+                        <div ref={cubeRef} className="view view-cube">
+                            <CubeView />
+                        </div>
+
+                        <div ref={listRef} className="view view-list">
+                            <ListView />
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>

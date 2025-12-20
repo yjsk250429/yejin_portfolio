@@ -65,6 +65,16 @@
         .inner {
             width: 1400px;
             // padding: 100px 0;
+            .view-area {
+                position: relative;
+            }
+
+            .view {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
             .btns {
                 display: flex;
                 justify-content: end;
@@ -72,7 +82,7 @@
                 button {
                     width: 35px;
                     height: 35px;
-                    background: #fff;
+                    background: #000;
                     border: 1px solid #fff;
                     display: flex;
                     justify-content: center;
@@ -82,15 +92,26 @@
                         span {
                             width: 18px;
                             height: 18px;
-                            background: #000;
+                            background: #fff;
+                        }
+                        &.active {
+                            background: #fff;
+                            span {
+                                background: #000;
+                            }
                         }
                     }
                     &.seeList {
-                        background: none;
                         i {
                             color: #fff;
                             font-size: 18px;
                             margin-top: 5px;
+                        }
+                        &.active {
+                            background: #fff;
+                            i {
+                                color: #000;
+                            }
                         }
                     }
                 }
