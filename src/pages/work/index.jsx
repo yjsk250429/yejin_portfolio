@@ -3,6 +3,7 @@ import CubeView from '../../components/work/cubeView/CubeView';
 import './style.scss';
 import { FaList } from 'react-icons/fa';
 import gsap from 'gsap';
+import ListView from '../../components/work/listView/ListView';
 
 const Work = () => {
     const [revealed, setRevealed] = useState(false);
@@ -130,6 +131,7 @@ const Work = () => {
                         </button>
                     </p>
                     <CubeView />
+                    {/* <ListView /> */}
                 </div>
             </section>
         </main>
