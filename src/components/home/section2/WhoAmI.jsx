@@ -76,15 +76,15 @@ const WhoAmI = () => {
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td>2025.09.24</td>
+                                        <td>2023.11.03</td>
                                         <td>컴퓨터활용능력 1급</td>
                                     </tr>
                                     <tr>
-                                        <td>2025.02.20</td>
+                                        <td>2023.07.30</td>
                                         <td>TOEIC 915점</td>
                                     </tr>
                                     <tr>
-                                        <td>2025.02.20</td>
+                                        <td>2020.04.23</td>
                                         <td>2종보통운전면허</td>
                                     </tr>
                                 </tbody>

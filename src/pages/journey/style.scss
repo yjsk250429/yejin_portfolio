@@ -1,0 +1,118 @@
+.journey {
+    .con {
+        // background-color: #f0f0f0;
+
+        .inner {
+            width: 1400px;
+            height: 1000px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            position: relative;
+            padding: 150px 0;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 600;
+        }
+    }
+
+    .con1 {
+        // background-color: #ffe5e5;
+    }
+
+    .con2 {
+        // background-color: #e5ffe5;
+        .items {
+            padding: 120px 0;
+        }
+        .inner {
+            height: auto;
+        }
+
+        .gallery {
+            width: 100%;
+            height: 100%;
+            padding: 4em 2em;
+            font-family: 'Neue Montreal';
+        }
+
+        .item {
+            width: 40%;
+            margin-bottom: 180px;
+        }
+
+        .item-info {
+            padding: 0.5em 0;
+        }
+
+        .item-img {
+            overflow: hidden;
+            height: clamp(260px, 40vw, 520px);
+            img {
+                will-change: transform;
+                transform: scale(1.25);
+                clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        // nth-child 배경
+        .item:nth-child(1) .item-img {
+            background: #faba4a;
+        }
+        .item:nth-child(2) .item-img {
+            background: #bb2a26;
+        }
+        .item:nth-child(3) .item-img {
+            background: #7e7d65;
+        }
+        .item:nth-child(4) .item-img {
+            background: #989682;
+        }
+        .item:nth-child(5) .item-img {
+            background: #5e4036;
+        }
+        .item:nth-child(6) .item-img {
+            background: #e33b12;
+        }
+        .item:nth-child(7) .item-img {
+            background: #252d1a;
+        }
+        .item:nth-child(8) .item-img {
+            background: #b04c0d;
+        }
+
+        // nth-child 위치
+        .item:nth-child(1),
+        .item:nth-child(5),
+        .item:nth-child(8) {
+            position: relative;
+            left: 5%;
+        }
+
+        .item:nth-child(3),
+        .item:nth-child(7) {
+            position: relative;
+            left: 20%;
+        }
+
+        .item:nth-child(2),
+        .item:nth-child(4),
+        .item:nth-child(6) {
+            position: relative;
+            left: 50%;
+        }
+    }
+
+    .con3 {
+        // background-color: #e5e5ff;
+    }
+
+    .con4 {
+        // background-color: #fff0cc;
+    }
+}

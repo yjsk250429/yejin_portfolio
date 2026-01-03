@@ -1,0 +1,98 @@
+.listView {
+    .filter {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        button {
+            background: none;
+            color: #fff;
+            font-family: 'Paperlogy';
+            border: none;
+            font-size: 18px;
+            font-weight: 300;
+            position: relative;
+            cursor: pointer;
+            &.on {
+                font-weight: 600;
+            }
+            &:not(:last-child)::after {
+                content: '';
+                display: block;
+                width: 2px;
+                height: 15px;
+                background: #fff;
+                position: absolute;
+                right: -10px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: default;
+            }
+        }
+    }
+
+    .list {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .thum-img {
+                width: 240px;
+                height: 240px;
+                overflow: hidden;
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+            .title-text {
+                width: 750px;
+                ul {
+                    display: flex;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                    li {
+                        border: 1px solid #fff;
+                        border-radius: 100px;
+                        padding: 2px 10px;
+                    }
+                }
+                h4 {
+                    font-size: 32px;
+                    font-weight: 500;
+                    margin-bottom: 30px;
+                }
+                .type {
+                    display: flex;
+                    gap: 40px;
+                    dl {
+                        dt {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+            }
+            .links-btns {
+                display: flex;
+                gap: 10px;
+                p {
+                    a {
+                        border: 1px solid #fff;
+                        background: #fff;
+                        padding: 10px 20px;
+                    }
+                    &:not(:first-child) {
+                        a {
+                            color: #fff;
+                            background: #000;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
